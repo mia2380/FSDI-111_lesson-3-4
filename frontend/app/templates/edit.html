@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Tasks{% endblock title %}
+
+{% block content %}
+<h1 class="text-center">Edit Tasks</h1>
+<form method="POST" action="{{ url_for('update_task') }}">
+    <p class="mb-3">
+        <label class="form-label" for="summary">Summary: </label>
+        <input class="form-control" type="text" value="{{ task['summary'] }}" name="summary" id="id_summary" />
+    </p>
+
+    <p class="mb-3">
+        <label class="form-label" for="description">Description: </label>
+        <textarea class="form-control" name="description" id="id_description">
+            {{ task['description']}}
+        </textarea>
+    </p>
+
+    <p class="mb-3">
+        <input class="form-control" type="hidden" value="{{ task['id'] }}" name="pk" id="id_pk" />
+    </p>
+
+    <p class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Update" />
+    </p>
+</form>
+{% endblock content %}
